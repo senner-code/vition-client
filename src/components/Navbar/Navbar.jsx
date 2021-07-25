@@ -1,16 +1,38 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { Context } from '../..'
+import './Navbar.css'
 
 const Navbar = () => {
+
+  const { store } = useContext(Context)
+
+
   return (
     <div className="Navbar">
-      <ul>
-        <li>
-          <Link to="/login">Login</Link>
-          <Link to="/">Home</Link>
+
+      
+
+      {store.isAuth
+        ?
+
+        <div className="Navbar-auth" >
+          <Link to="/dashboard">Dashboard</Link>
           <Link to="/profile">Profile</Link>
-        </li>
-      </ul>
+          <Link to='/'
+            onClick={() => {
+              store.logout()
+            }}>Выйти</Link>
+
+        </div>
+        
+        :
+        
+        <div className="Navbar-auth">
+          <Link to="/">Vition</Link>
+          <Link to="/auth">Join us</Link>
+        </div>}
+
     </div>
   )
 }

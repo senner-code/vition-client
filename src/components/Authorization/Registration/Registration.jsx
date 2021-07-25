@@ -1,7 +1,8 @@
 import React, { useState , useContext} from 'react'
 import { observer } from 'mobx-react-lite'
-import { Context } from '../../index'
-function Login() {
+import { Context } from '../../../index'
+import './Registration.css'
+function Registration() {
 
   const {store} = useContext(Context)
 
@@ -10,7 +11,7 @@ function Login() {
   const [username, setUsername] = useState('')
 
   return (
-    <div>
+    <div className="Registration">
       <input type="text"
         onChange ={e => setEmail(e.target.value)}
         value ={email}
@@ -29,10 +30,8 @@ function Login() {
 
 
       <button onClick = {() => store.registration(email, password, username)}>Registration</button>
-      <button onClick = {() => store.login(email, password)}>Login</button>
-      
     </div>
   )
 }
 
-export default observer(Login)
+export default observer(Registration)

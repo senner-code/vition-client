@@ -1,0 +1,27 @@
+.Navbar {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Navbar-auth {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+img {
+  height: 60px;
+  width: 100%;
+}
+
+
+a {
+  font-size: 23px;
+  text-decoration: none;
+  color: #060709	;
+}
