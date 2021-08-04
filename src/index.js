@@ -16,7 +16,8 @@ ReactDOM.render(
     store
   }}>
     <BrowserRouter>
-      <App />
+    <App />
+      
     </BrowserRouter>
   </Context.Provider>
   ,

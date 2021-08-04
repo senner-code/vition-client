@@ -1,11 +1,12 @@
-import { makeAutoObservable } from "mobx"
-import AuthService from "../services/AuthService"
+import { makeAutoObservable} from "mobx"
+import AuthService from "../services/auth.service.js"
 import axios from "axios"
 import { API_URL } from "../http"
 
 export default class Store {
   user = {}
   isAuth = false
+
 
   constructor() {
     makeAutoObservable(this)
@@ -38,7 +39,7 @@ export default class Store {
       this.setAuth(true)
       this.setUser(response.data.user)
     } catch (e) {
-      console.log(e.response.data.message);
+      console.log(e.response.data.message , 'Error - ' , e.response.data.errors);
     }
   }
 

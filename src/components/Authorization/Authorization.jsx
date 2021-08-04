@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import './Authorization.css'
 import Login from './Login/Login'
 import Registration from './Registration/Registration'
 const Authorization = () => {
 
   useEffect(() => {
-
   }, [])
 
   return (

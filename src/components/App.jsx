@@ -20,8 +20,6 @@ function App() {
     }
   }, [])
 
-
-
   return (
 
     <div className="App">
@@ -33,21 +31,22 @@ function App() {
 
           {store.isAuth ?
 
-            <div>
+            <React.Fragment>
               <Route path='/login' ><Redirect to='/' /></Route>
               <Route path='/registration'><Redirect to='/' /></Route>
-            </div>
+            </React.Fragment>
+
             :
 
-            <div>
-                <Route exact path='/' component={Main} />
-                <Route path='/auth' component={Authorization} />
-              </div>
-            
-            }
+            <React.Fragment>
+              <Route exact path='/' component={Main} />
+              <Route path='/auth' component={Authorization} />
+            </React.Fragment>
+
+          }
 
           <div className="header__content">
-            
+
           </div>
         </Switch>
 
@@ -56,13 +55,13 @@ function App() {
 
       <div className="content">
 
-      {store.isAuth ?
-        <React.Fragment>
-          <Route exact path='/dashboard'component={Dashboard} />
-        </React.Fragment>
-        :
-        null
-      }
+        {store.isAuth ?
+          <React.Fragment>
+            <Route exact path='/dashboard' component={Dashboard} />
+          </React.Fragment>
+          :
+          null
+        }
 
       </div>
 
