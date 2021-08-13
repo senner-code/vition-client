@@ -1,5 +1,6 @@
 import $api from "../http";
 
+
 export default class boardService {
 
 
@@ -14,8 +15,7 @@ export default class boardService {
 
 
   static async getBoardbyUserID(userID){
-    const board = (await $api.post('/board/getboard', {userID})).data[0]
-    return board
+    return (await $api.post('/board/getboard', {userID})).data[0]
   }
 }
 

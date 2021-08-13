@@ -1,19 +1,19 @@
 import './App.css';
-import React, { useEffect, useContext } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-// import Dashboard from './Dashboard/Dashboard';
+import React, {useEffect, createContext} from 'react'
+import {BrowserRouter} from 'react-router-dom'
 import Navbar from './Navbar/Navbar';
-import { observer } from 'mobx-react-lite';
-import { Context } from '..';
-import Main from './Main/Main';
-import Authorization from './Authorization/Authorization';
-import Dashboard from './Dashboard/Dashboard';
+import {observer} from 'mobx-react-lite';
+import Store from '../store/store';
+import Router from "./Router/Router";
 
+
+const store = new Store()
+
+export const Context = createContext(store)
 
 
 function App() {
 
-  const { store } = useContext(Context)
   useEffect(() => {
     if (localStorage.getItem('token')) {
       store.checkAuth()
@@ -21,54 +21,15 @@ function App() {
   }, [])
 
   return (
-
     <div className="App">
-
-
-      <div className="header">
-        <Navbar />
-        <Switch>
-
-          {store.isAuth ?
-
-            <React.Fragment>
-              <Route path='/login' ><Redirect to='/' /></Route>
-              <Route path='/registration'><Redirect to='/' /></Route>
-            </React.Fragment>
-
-            :
-
-            <React.Fragment>
-              <Route exact path='/' component={Main} />
-              <Route path='/auth' component={Authorization} />
-            </React.Fragment>
-
-          }
-
-          <div className="header__content">
-
-          </div>
-        </Switch>
-
-      </div>
-
-
-      <div className="content">
-
-        {store.isAuth ?
-          <React.Fragment>
-            <Route exact path='/dashboard' component={Dashboard} />
-          </React.Fragment>
-          :
-          null
-        }
-
-      </div>
-
-      <div className="footer">
-
-      </div>
-
+      <Context.Provider value = {{
+        store
+      }}>
+        <BrowserRouter>
+          <Navbar/>
+          <Router/>
+        </BrowserRouter>
+      </Context.Provider>
     </div>
   );
 }

@@ -1,25 +1,12 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './components/App'
 import reportWebVitals from './reportWebVitals';
-import Store from './store/store';
 
-
-const store = new Store()
-
-export const Context = createContext(store)
 
 ReactDOM.render(
-  <Context.Provider value = {{
-    store
-  }}>
-    <BrowserRouter>
-    <App />
-      
-    </BrowserRouter>
-  </Context.Provider>
+  <App/>
   ,
   document.getElementById('root')
 );

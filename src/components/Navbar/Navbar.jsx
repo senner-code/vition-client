@@ -1,17 +1,15 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Context } from '../..'
+import { Context } from '../App'
 import './Navbar.css'
+import {observer} from "mobx-react-lite";
 
 const Navbar = () => {
 
   const { store } = useContext(Context)
 
-
   return (
     <div className="Navbar">
-
-      
 
       {store.isAuth
         ?
@@ -37,4 +35,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default observer(Navbar)
