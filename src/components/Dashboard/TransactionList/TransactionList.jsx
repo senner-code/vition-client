@@ -2,14 +2,21 @@ import React, {useContext, useEffect, useState} from 'react';
 import TransactionService from "../../../services/transaction.service";
 import {Context} from "../../App";
 import TransactionItem from "./TransactionItem";
+import {useParams} from "react-router-dom";
+import CreateTransaction from "./CreateTransaction/CreateTransaction";
 
 
 
 const TransactionList = (props) => {
 
+  const {id} = useParams()
+
   const {store} = useContext(Context)
 
   const [transactions, setTransactions] = useState([])
+  const [limit, setLimit] = useState(10)
+  const [from, setFrom] = useState(0)
+  const [pageSize, setPageSize] = useState(false)
 
 
   const loadTransaction = async () => {
@@ -17,28 +24,47 @@ const TransactionList = (props) => {
 
     //Что то придумать поумнее
 
-    let transactionList = []
 
-
-    if (props.match.params.id) {
-      transactionList = await TransactionService.getTransactionsByWidget(props.match.params.id)
+    if (id) {
+      TransactionService.getTransactionsByWidget(id, from, limit).then(transactionList => {
+         const transactionElements = transactionList.map((transaction) => {
+           return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}/>
+         })
+         setTransactions([...transactionElements])
+       })
     }else{
-      transactionList = await TransactionService.getTransactionsByUser(store.user.id)
+      TransactionService.getTransactionsByUser(store.user.id, from, limit).then(transactionList => {
+        const transactionElements = transactionList.map((transaction) => {
+          return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}/>
+        })
+        setTransactions([...transactionElements])
+      })
     }
 
-    const transactionElements = transactionList.map((transaction) => {
-      return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}/>
-    })
-    setTransactions(...transactionElements)
+
   }
 
   useEffect(() => {
     loadTransaction()
   }, [])
 
+  useEffect(() => {
+    loadTransaction()
+  }, [pageSize])
+
   return (
     <div className='Transaction'>
+      {id? null
+      : <CreateTransaction transactions={transactions} new={setTransactions}/>
+      }
 
+      <input placeholder={'Введите с какой транзакции начать отсчёт'} value={from}
+        onChange={(e) => setFrom(e.target.value) }
+      />
+      <input placeholder={'Введите последний элемент выборки'} value={limit}
+             onChange={(e) => setLimit(e.target.value) }
+      />
+      <button onClick={() => setPageSize(!pageSize)}>Отсортировать</button>
       {transactions}
     </div>
   );

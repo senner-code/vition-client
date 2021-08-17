@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import WidgetService from "../../../../services/widget.service";
 import WidgetItem from "../WidgetItem";
+import {Context} from "../../../App";
 
 const CreateWidget = (props) => {
   const [name, setName] = useState('')
+
+  const {store} = useContext(Context)
 
   return (
     <div className='CreateWidget'>
@@ -14,7 +17,8 @@ const CreateWidget = (props) => {
       />
       <button onClick={() => {
         WidgetService.createWidget(props.board, name).then(widget => {
-          props.new([...props.widgets, <WidgetItem name={widget.name} id={widget.id}/>])
+          store.setWidgetDataList([...store.widgetDataList, widget])
+          props.new([...props.widgets, <WidgetItem key={widget.id} name={widget.name} id={widget.id}/>])
         })
         setName('')
       }}> Create WidgetList

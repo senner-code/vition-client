@@ -4,7 +4,7 @@ import WidgetList from "./WidgetList/WidgetList";
 import {Context} from '../App'
 import boardService from '../../services/board.service'
 import CreateBoard from "./CreateBoard";
-
+import TransactionList from "./TransactionList/TransactionList";
 
 const Dashboard = () => {
   const {store} = useContext(Context)
@@ -20,6 +20,7 @@ const Dashboard = () => {
         <React.Fragment>
           Board - {board.name}
           <WidgetList board={board.id}/>
+          <TransactionList/>
         </React.Fragment>
         : <CreateBoard new={setBoard}/>
       }

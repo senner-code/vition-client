@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import WidgetService from "../../../../services/widget.service";
+import TransactionList from "../../TransactionList/TransactionList";
 
 
 const Widget = (props) => {
@@ -16,6 +17,7 @@ const Widget = (props) => {
 
   useEffect(() => {
     loadWidget()
+
   },[])
 
 
@@ -23,6 +25,7 @@ const Widget = (props) => {
     <div>
       <h1>{props.match.params.id}</h1>
       <p>{widget.name}</p>
+      <TransactionList/>
     </div>
   );
 };

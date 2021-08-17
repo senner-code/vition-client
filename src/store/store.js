@@ -6,10 +6,15 @@ import { API_URL } from "../http"
 export default class Store {
   user = {}
   isAuth = false
+  widgetDataList = []
 
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  setWidgetDataList(newList){
+    this.widgetDataList = newList
   }
 
   setAuth(bool) {
