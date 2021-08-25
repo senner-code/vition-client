@@ -1,7 +1,6 @@
 import './App.css';
 import React, {useEffect, createContext} from 'react'
 import {BrowserRouter} from 'react-router-dom'
-import Navbar from './Navbar/Navbar';
 import {observer} from 'mobx-react-lite';
 import Store from '../store/store';
 import Router from "./Router/Router";
@@ -26,7 +25,7 @@ function App() {
         store
       }}>
         <BrowserRouter>
-          <Navbar/>
+
           <Router/>
         </BrowserRouter>
       </Context.Provider>
