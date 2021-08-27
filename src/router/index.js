@@ -1,12 +1,10 @@
 import Dashboard from "../components/Dashboard/Dashboard";
-import Registration from "../components/Registration/Registration";
-import Login from "../components/Login/Login";
 import Main from "../components/Main/Main";
 import Widget from "../components/Dashboard/WidgetList/Widget/Widget";
+import Auth from "../components/Auth/Auth";
 
 export const publicRouter = [
-  {path: '/login' , component: Login, exact : true},
-  {path: '/registration' ,component: Registration , exact: true },
+  {path: '/account' , component: Auth},
   {path: '/', component: Main, exact: true}
 ]
 

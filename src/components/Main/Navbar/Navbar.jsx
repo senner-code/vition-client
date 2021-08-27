@@ -7,8 +7,8 @@ const Navbar = () => {
   return (
     <div className="Navbar">
       <div className="container Navbar__container">
-        <Link to="/">Vition</Link>
-        <Link to="/auth">Join us</Link>
+        <Link className={'Navbar__logo'} to="/">Vition</Link>
+        <Link className={'Navbar__login'} to="/account/login">Join us</Link>
       </div>
     </div>
   )

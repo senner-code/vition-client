@@ -19,7 +19,7 @@ const Router = () => {
       { publicRouter.map((route) => {
         return <Route key={route.path} path={route.path} component={route.component} exact={route.exact}/>
       })}
-      <Redirect to={'/login'}/>
+      <Redirect to={'/'}/>
     </Switch>
 
 

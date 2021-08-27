@@ -1,0 +1,126 @@
+.Auth {
+  background-image: url("../../img/auth-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.Auth__container{
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+}
+
+.Auth__data {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 400px;
+  max-width: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 45px 5px rgba(176,176,176,0.58);
+  box-shadow: 0 0 45px 5px rgba(176,176,176,0.58);
+}
+
+.Auth__header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.Auth__header h2 {
+  margin: 0;
+}
+
+.form {
+  padding: 30px 40px;
+}
+
+.form__control{
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.form__control label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form__control input {
+  display: block;
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  width: 100%;
+  font-family: inherit;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form__control.success input{
+  border-color: #39c42d;
+}
+
+.form__control.error input{
+  border-color: #ef1111;
+}
+
+.form__control input:focus {
+  border: 2px solid #4179e9;
+  transition: border 0.3ms;
+}
+
+.form__control i {
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+}
+
+.form__control.success i.fa-check-circle {
+  visibility: visible;
+  color: #39c42d;
+}
+
+.form__control.error i.fa-exclamation-circle {
+  visibility: visible;
+  color: #ef1111;
+}
+
+
+.form__control small {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.form__control.error small {
+  visibility: visible;
+  color: #ef1111;
+}
+
+
+.form button {
+  background-color: #4179e9;
+  border-radius: 4px;
+  border: 2px solid #4179e9;
+  color: azure;
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+.Auth__info {
+  display: flex;
+  align-items: center;
+}
+
+.Auth__title {
+  margin-left: 20px;
+  color: azure;
+}

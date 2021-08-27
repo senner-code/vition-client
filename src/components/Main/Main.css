@@ -1,16 +1,22 @@
 
 .container {
     max-width: 1130px;
-    padding: 0 15px;
     margin: 0 auto;
 }
 
-
-
 .hero {
-    min-height: 789px;
+    min-height: 720px;
     background-image: url("../../img/img.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.hero__container {
+    color: azure;
+    padding-top: 100px;
+}
+
+.hero__title {
+    padding-top: 350px;
 }

@@ -18,6 +18,9 @@ const Dashboard = () => {
       {board
         ?
         <React.Fragment>
+          <button onClick={() => {
+            store.logout()}
+          }>Logout</button>
           Board - {board.name}
           <WidgetList board={board.id}/>
           <TransactionList/>

@@ -1,0 +1,33 @@
+.Navbar {
+  position: absolute;
+  padding: 24px 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.Navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.Navbar__container a {
+  color: azure;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+
+.Navbar__login {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 12px;
+  background-color: royalblue;
+}
+
+.Navbar__login:hover {
+  transition: background-color 0.3s;
+  background-color: #4179e9;
+}
