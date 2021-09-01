@@ -9,6 +9,7 @@ import {Context} from "../../App";
 
 const WidgetList = (props) => {
   const [widgets, setWidgets] = useState([])
+  const [create, setCreate] = useState(false)
   const {store} = useContext(Context)
 
   const getWidgets = async () => {
@@ -34,7 +35,14 @@ const WidgetList = (props) => {
   return (
     <div className="WidgetList">
       {widgets}
-      <CreateWidget new={setWidgets} widgets={widgets} board={props.board}/>
+      <li className={'WidgetItem'} onClick={() => {
+        setCreate(!create)
+      }}>+</li>
+      {
+        create ?
+          <CreateWidget new={setWidgets} widgets={widgets} board={props.board}/>
+          : null
+      }
 
     </div>
 

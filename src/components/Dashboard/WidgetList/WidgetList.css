@@ -1,0 +1,22 @@
+.WidgetItem {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.WidgetItem span {
+  color: black;
+  font-weight: 600;
+}
+
+.WidgetList {
+  display: flex;
+  margin-bottom: 20px;
+}

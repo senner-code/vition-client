@@ -3,11 +3,11 @@ import TransactionService from "../../../services/transaction.service";
 import {Context} from "../../App";
 import TransactionItem from "./TransactionItem";
 import {useParams} from "react-router-dom";
+import './TransactionList.css'
 import CreateTransaction from "./CreateTransaction/CreateTransaction";
 
 
-
-const TransactionList = (props) => {
+const TransactionList = () => {
 
   const {id} = useParams()
 
@@ -17,6 +17,7 @@ const TransactionList = (props) => {
   const [limit, setLimit] = useState(10)
   const [from, setFrom] = useState(0)
   const [pageSize, setPageSize] = useState(false)
+  const [newTransaction, setNewTransaction] = useState(false)
 
 
   const loadTransaction = async () => {
@@ -27,15 +28,18 @@ const TransactionList = (props) => {
 
     if (id) {
       TransactionService.getTransactionsByWidget(id, from, limit).then(transactionList => {
-         const transactionElements = transactionList.map((transaction) => {
-           return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}/>
-         })
-         setTransactions([...transactionElements])
-       })
-    }else{
+        const transactionElements = transactionList.map((transaction) => {
+
+          return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}
+                                  time={String(transaction.time).split('T')[0]}/>
+        })
+        setTransactions([...transactionElements])
+      })
+    } else {
       TransactionService.getTransactionsByUser(store.user.id, from, limit).then(transactionList => {
         const transactionElements = transactionList.map((transaction) => {
-          return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}/>
+          return <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description}
+                                  time={String(transaction.time).split('T')[0]}/>
         })
         setTransactions([...transactionElements])
       })
@@ -54,18 +58,26 @@ const TransactionList = (props) => {
 
   return (
     <div className='Transaction'>
-      {id? null
-      : <CreateTransaction transactions={transactions} new={setTransactions}/>
+      {
+        newTransaction ?
+          <CreateTransaction transactions={transactions} new={setTransactions} complete={setNewTransaction}/>
+          : null
       }
 
+
       <input placeholder={'Введите с какой транзакции начать отсчёт'} value={from}
-        onChange={(e) => setFrom(e.target.value) }
+             onChange={(e) => setFrom(e.target.value)}
       />
       <input placeholder={'Введите последний элемент выборки'} value={limit}
-             onChange={(e) => setLimit(e.target.value) }
+             onChange={(e) => setLimit(e.target.value)}
       />
+
       <button onClick={() => setPageSize(!pageSize)}>Отсортировать</button>
-      {transactions}
+      <button onClick={() => setNewTransaction(!newTransaction)}>Создать</button>
+      <ul className={'TransactionList'}>
+        {transactions}
+      </ul>
+
     </div>
   );
 };

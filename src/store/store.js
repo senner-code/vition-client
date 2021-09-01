@@ -52,9 +52,10 @@ export default class Store {
     try {
       await AuthService.logout()
       localStorage.removeItem('token')
-      this.isAuth = false
+      this.setAuth(false)
       this.setUser({})
     } catch (e) {
+      console.log(e)
       console.log(e.response.data.message);
     }
   }

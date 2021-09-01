@@ -10,12 +10,12 @@ const SelectWidget = (props) => {
   })
 
   return (
-    <select onChange={(e) => {
+    <select defaultValue={'Choose Widget'} onChange={(e) => {
       props.select(e.target.value)
     }}>
-      <option value="" selected disabled hidden>Choose widget</option>
+      <option value="Choose Widget" disabled hidden>Choose widget</option>
       {store.widgetDataList.map((widget,index) => {
-        return <option value={widget.id}>{widget.name}</option>
+        return <option key={index} value={widget.id}>{widget.name}</option>
       })}
     </select>
   );

@@ -11,6 +11,7 @@ function Auth(props) {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [checkPassword, setCheckPassword] = useState('')
 
   return (
     <div className="Auth">
@@ -48,7 +49,7 @@ function Auth(props) {
               <div className="Auth__header">
                 <h2>Create Account</h2>
               </div>
-              <form className="form">
+              <div className="form">
                 <div className="form__control">
                   <label>Username</label>
                   <Input type={'text'} placeholder={'Username'} value={username} setValue={setUsername}/>
@@ -72,7 +73,7 @@ function Auth(props) {
                 </div>
                 <div className="form__control">
                   <label>Repeat Password</label>
-                  <Input type={'password'} placeholder={'Password'} value={password} setValue={setPassword}/>
+                  <Input type={'text'} placeholder={'Password'} value={checkPassword} setValue={setCheckPassword}/>
                   <i className={'fas fa-check-circle'}/>
                   <i className={'fas fa-exclamation-circle'}/>
                   <small>Error Message</small>
@@ -80,7 +81,7 @@ function Auth(props) {
 
                 <button onClick={() => store.registration(email, password, username)}>Registration</button>
                 <span>Have account? <Link to={'/account/login'}>Sign in</Link></span>
-              </form>
+              </div>
 
             </div>
             : null

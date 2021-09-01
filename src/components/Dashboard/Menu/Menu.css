@@ -1,0 +1,40 @@
+.Menu {
+  background-color:#F2F2F2 ;
+  display: flex;
+  padding: 20px 10px 10px;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  width: 60px;
+  height: 100vh;
+}
+
+.Menu a {
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: black;
+}
+
+.Menu__active{
+  transition: all 50ms ease-in-out 0s;
+  align-items: start;
+  width: 150px;
+}
+
+.Menu svg {
+  color: #4179e9;
+  width: 40px;
+  height: 40px;
+}
+
+.Menu__active svg {
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  transition: all 50ms ease-in-out 0s;
+}
+
+a {
+  display: flex;
+  align-items: center;
+}
