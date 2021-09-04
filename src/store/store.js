@@ -7,6 +7,7 @@ export default class Store {
   user = {}
   isAuth = false
   widgetDataList = []
+  transactionList = []
 
 
   constructor() {

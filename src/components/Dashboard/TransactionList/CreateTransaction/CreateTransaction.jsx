@@ -2,7 +2,6 @@ import React, {useContext, useState} from 'react';
 import SelectWidget from "./SelectWidget";
 import TransactionService from "../../../../services/transaction.service";
 import {Context} from "../../../App";
-import TransactionItem from "../TransactionItem";
 import ChooseTime from "../ChooseTime";
 const CreateTransaction = (props) => {
 
@@ -35,9 +34,15 @@ const CreateTransaction = (props) => {
       <ChooseTime setDate={setTime}/>
       <button onClick={() => {
         TransactionService.createTransaction(Number(transType+value), time || null, description, selected, store.user.id)
-          .then(transaction => {
+          .then((transaction,index) => {
             props.new([...props.transactions,
-              <TransactionItem key={transaction.id} value={transaction.value} description={transaction.description} time={transaction.time.split('T')[0]}/>])
+              {
+                transaction_number: index,
+                transaction_id: transaction.id,
+                description: transaction.description,
+                time:transaction.time,
+                value: transaction.value
+              }])
             props.complete(false)
           })
       }}>Создать
