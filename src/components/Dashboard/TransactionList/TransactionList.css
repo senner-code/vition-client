@@ -1,22 +1,65 @@
 .TransactionList {
-  border: 1px solid darkolivegreen;
+  overflow: hidden;
+  min-width: 550px;
   display: flex;
   flex-direction: column;
-  margin: 10px 0 0;
-  padding: 15px;
-  width: 60%;
-  list-style: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 }
 
-.itemList {
+.TransactionList .changeList {
+  display: grid;
+  cursor: pointer;
+  text-align: center;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  justify-items: stretch;
+  padding: 15px;
+  color: white;
+  font-weight:500;
+  font-size: 18px;
+  background-color: #4179e9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.TransactionList .list {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.TransactionItem{
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.createTransaction {
+  position: absolute;
+  margin-left: 60px;
+  margin-top: -4px;
+}
+
+.arrowType{
+  position: absolute;
+  padding-top: 2px;
+  margin-left: 3px;
+}
+
+.page__list {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 10px;
   list-style: none;
 }
 
-.itemList li {
-  margin-left: 10px;
+.page__list li {
+  cursor: pointer;
+  background-color: #F2F2F2;
+  border-radius: 3px;
+  padding: 8px 10px;
+  margin-left: 8px;
 }
+

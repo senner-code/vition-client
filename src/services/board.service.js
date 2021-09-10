@@ -5,8 +5,7 @@ export default class boardService {
 
 
   static async createBoard(userID, name){
-    console.log(name)
-    return (await $api.post('/board/create', {userID, name})).data
+    return (await $api.post('/board/create', {userID, name})).data[0]
   }
 
   //For Future (Corp Accounts)

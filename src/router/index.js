@@ -1,6 +1,5 @@
 import Dashboard from "../components/Dashboard/Dashboard";
 import Main from "../components/Main/Main";
-import Widget from "../components/Dashboard/WidgetList/Widget/Widget";
 import Auth from "../components/Auth/Auth";
 
 export const publicRouter = [
@@ -9,6 +8,5 @@ export const publicRouter = [
 ]
 
 export const privateRouter = [
-  {path: '/dashboard' , component: Dashboard , exact : true},
-  {path: '/dashboard/:id', component: Widget, exact: true}
+  {path: '/dashboard' , component: Dashboard , exact : true}
 ]

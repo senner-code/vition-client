@@ -1,0 +1,11 @@
+.CreateTransaction{
+  display: grid;
+  padding: 30px;
+
+  grid-row-gap: 20px;
+}
+
+.CreateTransaction label {
+  margin-bottom: -20px;
+
+}

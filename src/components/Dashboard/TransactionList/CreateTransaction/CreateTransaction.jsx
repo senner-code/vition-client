@@ -1,9 +1,12 @@
 import React, {useContext, useState} from 'react';
-import SelectWidget from "./SelectWidget";
+import SelectCategory from "./SelectCategory";
 import TransactionService from "../../../../services/transaction.service";
 import {Context} from "../../../App";
 import ChooseTime from "../ChooseTime";
-const CreateTransaction = (props) => {
+import './CreateTransaction.css'
+import Input from "../../../UI/Input";
+
+const CreateTransaction = ({setActive,updateStatus,transactions,update,board_id,setTransactions}) => {
 
   const {store} = useContext(Context)
   const [description, setDescription] = useState('')
@@ -15,14 +18,13 @@ const CreateTransaction = (props) => {
 
 
   return (
-    <div className='newTransaction'>
+    <div className='CreateTransaction'>
 
-      <input type={'text'} value={value} placeholder={'Введите Value'} onChange={(event => {
-        setValue(event.target.value)
-      })}/>
-      <input type={'text'} value={description} placeholder={'Введите Description'} onChange={(e => {
-        setDescription(e.target.value)
-      })}/>
+      <label>Сумма</label>
+      <Input type={'text'} value={value} placeholder={'Введите Value'} setValue={setValue}/>
+      <label>Описание</label>
+      <Input type={'text'} value={description} placeholder={'Введите Description'} setValue={setDescription}/>
+      <label>Тип Транзакции</label>
       <select name="transaction_type" defaultValue={"0"} onChange={e => {
         setTransType(e.target.value)
       }}>
@@ -30,12 +32,14 @@ const CreateTransaction = (props) => {
         <option value="+">Доход</option>
         <option value="-">Расход</option>
       </select>
-      <SelectWidget select={setSelected}/>
+      <label>Категория</label>
+      <SelectCategory selected={selected} select={setSelected} board_id={board_id}/>
+      <label>Дата</label>
       <ChooseTime setDate={setTime}/>
       <button onClick={() => {
         TransactionService.createTransaction(Number(transType+value), time || null, description, selected, store.user.id)
           .then((transaction,index) => {
-            props.new([...props.transactions,
+            setTransactions([...transactions,
               {
                 transaction_number: index,
                 transaction_id: transaction.id,
@@ -43,7 +47,8 @@ const CreateTransaction = (props) => {
                 time:transaction.time,
                 value: transaction.value
               }])
-            props.complete(false)
+            setActive(false)
+            update(!updateStatus)
           })
       }}>Создать
       </button>

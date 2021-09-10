@@ -6,9 +6,6 @@ import { API_URL } from "../http"
 export default class Store {
   user = {}
   isAuth = false
-  widgetDataList = []
-  transactionList = []
-
 
   constructor() {
     makeAutoObservable(this)
@@ -49,6 +46,8 @@ export default class Store {
     }
   }
 
+
+
   async logout() {
     try {
       await AuthService.logout()
@@ -60,6 +59,8 @@ export default class Store {
       console.log(e.response.data.message);
     }
   }
+
+
 
   async checkAuth() {
     try {
