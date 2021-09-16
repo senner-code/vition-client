@@ -22,13 +22,11 @@ const ChooseTime = (props) => {
   }, [date])
 
   return (
-    <div>
-      <DatePicker
-        format={'y-MM-dd'}
-        onChange={setDate}
-        value={date}
-      />
-    </div>
+    <DatePicker
+      format={'y-MM-dd'}
+      onChange={setDate}
+      value={date}
+    />
   );
 };
 

@@ -54,7 +54,6 @@ const TransactionList = (props) => {
 
   useEffect(() => {
     if(transactionsCount >= 10){
-      console.log('Here')
       const pagesCount = Math.ceil(transactionsCount / 10)
       const uls = []
       for (let i = 0; i < pagesCount; i++) {

@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import SelectCategory from "./SelectCategory";
 import TransactionService from "../../../../services/transaction.service";
 import {Context} from "../../../App";
-import ChooseTime from "../ChooseTime";
+import ChooseTime from "../../../UI/ChooseTime";
 import './CreateTransaction.css'
 import Input from "../../../UI/Input";
 
