@@ -8,7 +8,6 @@ const ChooseTime = (props) => {
 
   useEffect(() => {
     const tempDate =
-
       String(date.getFullYear())
       + '-' +
       String(date.getMonth() >= 9
@@ -17,7 +16,6 @@ const ChooseTime = (props) => {
       + '-' +
       String(date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
       ' 00:00:00-00'
-
     props.setDate(tempDate)
   }, [date])
 

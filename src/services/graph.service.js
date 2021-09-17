@@ -1,11 +1,12 @@
 import $api from "../http";
 import SortTransactions from "./sort.transactions";
 
-class LineGraph {
+class GraphService {
 
   static async getData(user_id, from, to, type) {
     try {
       const data = (await $api.get(`/graph/all/${user_id}/${from}/${to}${type ? `/${type}` : ''}`,)).data
+      console.log(data)
       const list = data.map(object => {
         return {
           value: object.value,
@@ -27,7 +28,6 @@ class LineGraph {
       let totalValue = 0
       const data = (await $api.get(`/graph/category/${board_id}/${from}/${to}/${type}`)).data
       const list = SortTransactions.sortByType(data,type===1 ? type : null)
-      console.log(list)
       return list.map((elem, index) => {
         if (index > 2) {
           totalValue += elem.value
@@ -55,4 +55,4 @@ class LineGraph {
 
 }
 
-export default LineGraph
+export default GraphService

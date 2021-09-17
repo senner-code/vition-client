@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './DateGraph.css'
 import {Line} from 'react-chartjs-2';
-import LineGraph from "../../../services/linegraph.service";
+import GraphService from "../../../services/graph.service.js";
 import ChooseTime from "../../UI/ChooseTime";
+import moment from "moment";
 
 const options = {
   legend: {
@@ -20,14 +21,14 @@ const options = {
 };
 
 
-const DateGraph = () => {
-  const [dateStart, setDateStart] = useState('2021-08-15 00:00:00-00')
-  const [dateEnd, setDateEnd] = useState('2021-12-15 00:00:00-00')
+const DateGraph = ({user_id}) => {
+  const [dateStart, setDateStart] = useState(moment().add(-1,'month').format())
+  const [dateEnd, setDateEnd] = useState(moment().format())
   const [changeDate, setChangeDate] = useState(false)
   const [data, setData] = useState({})
 
   const fetchData = async () => {
-    const dataForGraph = await LineGraph.getData(1,dateStart,dateEnd)
+    const dataForGraph = await GraphService.getData(user_id,dateStart,dateEnd)
     setData({
       labels: dataForGraph.map(elem => elem.time),
       datasets: [

@@ -31,7 +31,7 @@ export default class Store {
       this.setAuth(true)
       this.setUser(response.data.user)
     } catch (e) {
-      console.log(e.response.data.message);
+      return e.response.data.message
     }
   }
 
@@ -42,7 +42,11 @@ export default class Store {
       this.setAuth(true)
       this.setUser(response.data.user)
     } catch (e) {
-      console.log(e.response.data.message , 'Error - ' , e.response.data.errors);
+      console.log(e.response.data)
+      return {
+        message: e.response.data.message,
+        error: (e.response.data.errors.map((e) => e.param)).join('')
+      }
     }
   }
 

@@ -35,8 +35,8 @@ const Dashboard = () => {
           <div className="Dashboard__content">
             <Menu/>
             <div className="Dashboard__data">
-              <DateGraph/>
-              <InfoTab/>
+              <DateGraph user_id={store.user.id}/>
+              <InfoTab board_id={board.id}/>
               <TransactionList board={board}/>
             </div>
           </div>

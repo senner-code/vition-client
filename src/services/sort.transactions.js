@@ -18,7 +18,6 @@ class SortTransactions {
       b = b.value < 0 ? -b.value : b.value
       return a>b ? 1 : a===b ? 0 : -1
     })
-    console.log('New list  - ', listNew)
     if(type){
       return listNew.reverse()
     }
